@@ -1,0 +1,6 @@
+build/
+Xbox 360/
+*.user
+*.suo
+*.sdf
+ipch/

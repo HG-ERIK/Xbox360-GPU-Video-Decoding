@@ -130,3 +130,44 @@ The decoder's API (the `H264...` functions behind `xav.lib`):
 
 - 1080p 60 fps decodes at about 48-54 fps: Level 4.2 is beyond what the decoder was designed for.
 - HEVC and 10-bit video need a new decoder, written for the Xbox 360's CPU and GPU.
+
+## Building
+
+Requirements: Windows, Visual Studio 2010 SP1 and the Xbox 360 SDK (XDK 2.0.21256.3; other versions are untested).
+The XDK is not included.
+
+```
+powershell -ExecutionPolicy Bypass -File build.ps1
+```
+
+This builds zlib and FFmpeg, then the player. The result is `build\GpuPlayer\Release\default.xex` with its `Media`
+folder; copy both to the console and start `default.xex`.
+
+Source layout:
+
+| Path | Contents |
+|---|---|
+| `src/GpuH264.cpp` | Loading and driving the console's H.264 decoder |
+| `src/FFPlayerGpu.inc` | Feeding access units, time stamps, frame queue |
+| `src/GpuFrame.cpp` | Frame pacing, swaps and yield points |
+| `src/FFPlayerXav.inc` | WMV playback through XAV |
+| `src/FFPlayer.cpp` | Demuxing, audio, A/V clock, seeking |
+| `src/player/` | The file browser and the player screen |
+| `external/ffmpeg360` | FFmpeg, modified for Xbox 360 (demuxing and audio decoding) |
+| `external/mbedtls` | Mbed TLS |
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 or later. See [LICENSE](LICENSE).
+
+It includes third-party code under these licenses:
+
+| Component | License | Notes |
+|---|---|---|
+| FFmpeg (`external/ffmpeg360`) | GPL-2.0-or-later (configured with `CONFIG_GPL`; most files are LGPL-2.1-or-later) | Based on FFmpeg 0.6 from the FFPlay360 port, with Xbox 360 changes (VMX128 code, native threads). Full source with all modifications is in this repository. |
+| zlib (`external/ffmpeg360/vcproj/external/zlib`) | zlib License | |
+| Mbed TLS (`external/mbedtls`) | Apache-2.0 | |
+| Inter font (`media/Fonts`) | SIL Open Font License 1.1 | See `media/Fonts/Inter-LICENSE.txt` |
+
+The Xbox 360 SDK libraries the player links against (Direct3D, XAudio2, XAV) and the console's own decoder module
+are Microsoft's and are not part of this repository.
