@@ -40,6 +40,7 @@ All figures are measured on a real console from its HDMI output.
 - [x] MKV, MP4, M4V, MOV, WMV
 - [x] Exact seeking
 - [ ] 1080p 60 fps
+- [ ] multichannel audio
 - [ ] HEVC (H.265)
 - [ ] 10-bit video
 
