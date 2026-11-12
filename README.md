@@ -5,12 +5,16 @@ Requires an RGH/JTAG console.
 
 ## Supported
 
-| Codec | Resolution | Frame rate | Bitrate (tested) | Status |
+| Codec         | Resolution | Frame rate | Bitrate (tested) | Status |
 |---|---|---|---|---|
-| H.264 | 1080p | 30 fps | up to 30 Mbps | Works |
-| H.264 | 720p | 60 fps | up to 15 Mbps | Works |
-| H.264 | 1080p | 60 fps | | Not yet |
-| HEVC (H.265) | | | | Not yet |
+| H.264         | 720p       | 30 fps     | up to 15 Mbps    | Works   |
+| H.264         | 720p       | 60 fps     | up to 15 Mbps    | Works   |
+| H.264         | 1080p      | 30 fps     | up to 30 Mbps    | Works   |
+| H.264         | 1080p      | 60 fps     | -                | not yet |
+| HEVC (H.265)  | 720p       | 30 fps     | -                | Not yet |
+| HEVC (H.265)  | 720p       | 60 fps     | -                | Not yet |
+| HEVC (H.265)  | 1080p      | 30 fps     | -                | Not yet |
+| HEVC (H.265)  | 1080p      | 60 fps     | -                | not yet |
 
 Containers: MKV, MP4, M4V, MOV, WMV
 
