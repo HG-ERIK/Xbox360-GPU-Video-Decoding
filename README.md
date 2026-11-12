@@ -43,6 +43,22 @@ All figures are measured on a real console from its HDMI output.
 - [ ] multichannel audio
 - [ ] HEVC (H.265)
 - [ ] 10-bit video
+---
+
+### Own decoder (in progress)
+
+The built-in decoder needs about 17 ms of GPU time per 1080p picture, so it stops at about 50 fps.
+so we are throwing out microsoft's own decoder completely and write our own decoder
+The built-in decoder stays for everything it already plays well.
+The same GPU part can later be used for HEVC.
+
+- [x] Measure why the built-in decoder stops at about 50 fps at 1080p
+- [x] GPU programs compute H.264's picture math exactly (motion compensation, deblocking): 0 errors
+- [x] HEVC decoder running on the console (CPU only, exact output at SD resolution)
+- [ ] CPU fast enough to unpack 1080p 60 fps video
+- [ ] GPU rebuilds one 1080p picture in under 14 ms
+- [ ] 1080p 60 fps H.264 on our own decoder
+- [ ] HEVC on our own decoder
 
 ## How it works (in depth)
 
